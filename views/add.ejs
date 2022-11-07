@@ -1,0 +1,76 @@
+<%- include('parts/header.ejs')%>
+    <%- include('parts/nav.ejs')%>
+
+        <style>
+            * {
+                font-family: NotoNaskhArabic !important;
+                font-size: 23px;
+            }
+
+            body {
+                direction: rtl;
+
+            }
+        </style>
+        <div class="container mt-2 bg-info" style="
+        min-height: 345px;
+        border-radius: 18px;
+    ">
+            <!-- Content here -->
+
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                        type="button" role="tab" aria-controls="nav-home" aria-selected="true">أضف</button>
+                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                        type="button" role="tab" aria-controls="nav-profile" aria-selected="false">أحذف</button>
+                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                        type="button" role="tab" aria-controls="nav-contact" aria-selected="false">عدل</button>
+
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+                    tabindex="0">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-add1-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                aria-selected="true"> أضف عالم</button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                            aria-labelledby="nav-add1-tab" tabindex="0">
+                            <form action="/addMan" method="post">
+                                <div class="input-group mb-3">
+
+                                    <input type="text" name="name" class="form-control" placeholder="الاسم"
+                                        aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-group mb-3">
+
+                                    <input type="text" name="image" class="form-control" placeholder="صوره"
+                                        aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-group mb-3">
+
+                                    <input type="text" name="discr" class="form-control" placeholder="تعريف"
+                                        aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                                <button type="submit" class="btn btn-primary">أضف</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
+                    tabindex="0">
+                    delet</div>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"
+                    tabindex="0">
+                    edit</div>
+
+            </div>
+        </div>
+        <%- include('parts/footer.ejs')%>

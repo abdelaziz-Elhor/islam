@@ -1,0 +1,72 @@
+<%- include('parts/header.ejs')%>
+    <%- include('parts/nav.ejs')%>
+        <%if(type!=="articles"){%>
+            <style>
+                * {
+                    font-family: NotoNaskhArabic !important;
+                    font-size: 23px;
+                }
+
+                .hadith {
+                    color: blue;
+                }
+            </style>
+            <div class="card mb-3 text-center bg-info mt-5" style="direction: rtl;">
+                <h5 class="card-title">
+                    <img src="<%=man.image%>" class="rounded-circle" style="
+                    width: 100px;
+                ">
+                    <%=man.name%>
+                </h5>
+                <video src="<%=subject.url%>" controls class="card-img-top">
+
+                </video>
+                <div class="card-body">
+
+
+
+                    <p class="card-text">
+                        <%=subject.name%>
+                    </p>
+                    <p class="card-text"><small class="text-muted">
+                            <%=subject.date%>
+                        </small></p>
+                </div>
+            </div>
+            <%}else{%>
+                <div class="card mb-3 text-center bg-info mt-5" style="direction: rtl;">
+                    <h5 class="card-title">
+                        <img src="<%=man.image%>" class="rounded-circle">
+                        <%=man.name%>
+                    </h5>
+
+                    <div class="card-body">
+
+                        <p class="card-text">
+                            <%=subject.name%>
+                        </p>
+                        <p class="card-text alltext">
+                            <%=subject.text%>
+                        </p>
+                        <p class="card-text"><small class="text-muted">
+                                <%=subject.date%>
+                            </small></p>
+                    </div>
+                </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script>
+
+                    let all = $(".alltext").text()
+                    let text = all
+                    let texts = text.split("")
+                    for (let i = 0; i < text.length; i++) {
+                        text.replace("(", "<div class='hadith'>(")
+                        text.replace(")", ")</div>")
+                        text.replace(".", ".<br>")
+                    }
+                    console.log(text)
+
+                </script>
+                <%}%>
+
+                    <%- include('parts/footer.ejs')%>

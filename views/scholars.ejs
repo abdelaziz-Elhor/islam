@@ -1,0 +1,85 @@
+<%- include('parts/header.ejs')%>
+    <%- include('parts/nav.ejs')%>
+        <style>
+            a.col-4 {
+                max-width: 235px;
+
+            }
+
+            .card-img-top {
+                transition: all ease-in-out .5s;
+            }
+
+            .card:hover .card-img-top {
+                height: 11rem;
+                box-shadow: -4px 7px 20px;
+                width: 92%;
+                margin-left: 4%;
+                margin-bottom: 1px;
+            }
+        </style>
+        <div class=" row my-0 mt-2" style="
+        margin: 0;
+    ">
+
+            <div class="col-9 row" style="
+            margin: 0;
+        ">
+
+                <% for(let scholar of data){ %>
+
+                    <a class="col-4 my-2  mt-2 btn " href="scholar/<%=scholar._id%>"
+                        style="margin-right: 8px;    border: 0;">
+
+                        <div class="card" style="max-height: 358px;overflow: hidden;">
+                            <img src="<%=scholar.image%>" style="height: 11rem;" class="card-img-top " alt="..."
+                                title="<%=scholar.name%>">
+                            <div class="card-body" style="
+overflow: auto;
+height: 100%;
+">
+                                <h2>
+                                    <%=scholar.name%>
+                                </h2>
+                                <p class="card-text">
+                                    <%=scholar.discr%>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <%}%>
+            </div>
+            <div class="col-3">
+                <div class="list-group" style="
+    direction: rtl;
+">
+                    <a href="/" type="button" class="list-group-item list-group-item-action " aria-current="true">
+                        <img src="https://img.icons8.com/fluency/344/cottage.png" style="
+    width: 40px;
+">
+                        <h4 style="
+    display: inline-block;
+">الرئيسيه</h4>
+                    </a>
+                    <a href="/scholars" type="button" class="list-group-item list-group-item-action active">
+                        <img src="https://img.icons8.com/external-ddara-lineal-color-ddara/344/external-Muslim-arabic-man-islam-man-arab-beard-avatar-religion-ddara-lineal-color-ddara.png"
+                            style="
+    width: 40px;
+">
+                        <h4 style="
+    display: inline-block;
+">العلماء والدعاة</h4>
+                    </a>
+                    <a href="/moshaf" type="button" class="list-group-item list-group-item-action ">
+                        <img src="https://img.icons8.com/external-others-bzzricon-studio/512/external-quran-ramadan-others-bzzricon-studio-2.png"
+                            style="
+    width: 40px;
+">
+                        <h4 style="
+    display: inline-block;
+">المصحف</h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <%- include('parts/footer.ejs')%>
