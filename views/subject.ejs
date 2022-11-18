@@ -59,12 +59,55 @@
                     let all = $(".alltext").text()
                     let text = all
                     let texts = text.split("")
-                    for (let i = 0; i < text.length; i++) {
-                        text.replace("(", "<div class='hadith'>(")
-                        text.replace(")", ")</div>")
-                        text.replace(".", ".<br>")
-                    }
-                    console.log(text)
+                    let myPromise = new Promise(function (resolve, reject) {
+
+                        for (let i = 0; i < texts.length; i++) {
+
+                            if (texts[i] == ".") {
+                                texts[i] = ".<br>"
+
+                            }
+                            if (texts[i] == "(") {
+                                texts[i] = "<div class='hadith'>("
+                            }
+                            if (texts[i] == ")") {
+                                texts[i] = ")</div>"
+                            }
+                            if (texts[i] == "{") {
+                                texts[i] = "<div class='quran'>{"
+                            }
+                            if (texts[i] == "}") {
+                                texts[i] = "}</div>"
+                            }
+                            if (texts[i] == "ا" && texts[i + 1] == "ل" && texts[i + 2] == "ل" && texts[i + 3] == "ه") {
+                                texts[i] = "<div class='allh'>الله</div>"
+                                texts[i + 1] = ""
+                                texts[i + 2] = ""
+                                texts[i + 3] = ""
+                            }
+                            // if (isNaN(texts[i]) == false && texts[i + 1] == "-") {
+                            //     texts[i] = `<div class="num">${texts[i]}</div>`
+                            //     texts[i + 1] = "-"
+                            // }
+                            // if (isNaN(texts[i]) == false && isNaN(texts[i + 1]) == false && texts[i + 2] == "-") {
+                            //     texts[i] = `<div class="num">${texts[i]}${texts[i + 1]}</div>`
+                            //     texts[i + 2] = "-"
+                            //     texts[i + 1] = ""
+                            // }
+                        }
+                        resolve("ok");
+                        reject("error");
+                    });
+
+                    myPromise.then(
+                        function (value) {
+                            let texts2 = texts.join("")
+                            $(".alltext").html(texts2)
+                        },
+                        function (err) { console.log(err) }
+                    );
+
+
 
                 </script>
                 <%}%>

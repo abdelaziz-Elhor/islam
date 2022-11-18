@@ -14,6 +14,15 @@
                                 border-radius: 23px;
 
                         }
+
+                        .play.plaing {
+                                background-color: black;
+                                color: white;
+                                box-shadow: -4px 5px 20px black;
+                                border-color: black;
+                                cursor: not-allowed !important;
+                                pointer-events: auto;
+                        }
                 </style>
                 <div style="margin: 0;" class=" row my-0 mt-2">
                         <div class="col"></div>
@@ -2973,6 +2982,15 @@
                                         let e = find("name", $(this).attr("data-aname"))
                                         Audio($(this).attr("data-name"), $(this).attr("data-aname"), $(this).attr("data-url"))
                                         goToPage(e.page)
+                                        $(".play").removeClass("plaing")
+                                        $(".accordion-button").addClass("collapsed")
+                                        $(".accordion-button").attr("aria-expanded", "false")
+                                        $(".play").removeAttr("disabled")
+                                        $(this).addClass("plaing")
+                                        $(this).attr("disabled", "")
+
+                                        const element = document.getElementsByTagName("audio")[0];
+                                        element.scrollIntoView(true);
                                 })
                                 $(".gopage").on("click", function () {
 
