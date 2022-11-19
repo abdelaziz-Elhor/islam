@@ -107,3 +107,51 @@ exports.moshaf = (req, res, next) => {
     })
 
 }
+exports.getAnashid = (req, res, next) => {
+    mongoose.connect(url, { useNewUrlParser: true }, (err) => {
+        Anashid.find({}, (err, data) => {
+
+            mongoose.disconnect()
+            res.render("anashid", {
+                data: data,
+            })
+        })
+    })
+
+}
+exports.getAudios = (req, res, next) => {
+    mongoose.connect(url, { useNewUrlParser: true }, (err) => {
+        Audio.find({}, (err, data) => {
+
+            mongoose.disconnect()
+            res.render("audios", {
+                data: data,
+            })
+        })
+    })
+
+}
+exports.getArticles = (req, res, next) => {
+    mongoose.connect(url, { useNewUrlParser: true }, (err) => {
+        Article.find({}, (err, data) => {
+
+            mongoose.disconnect()
+            res.render("articles", {
+                data: data,
+            })
+        })
+    })
+
+}
+
+exports.getLessons = (req, res, next) => {
+    mongoose.connect(url, { useNewUrlParser: true }, (err) => {
+        Lesson.find({}, (err, data) => {
+
+            mongoose.disconnect()
+            res.render("lessons", {
+                data: data,
+            })
+        })
+    })
+}

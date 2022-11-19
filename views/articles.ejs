@@ -1,48 +1,36 @@
 <%- include('parts/header.ejs')%>
     <%- include('parts/nav.ejs')%>
         <style>
-            a.col-4 {
-                max-width: 235px;
-
+            .card.text-center.text-bg-dark.mb-3 {
+                max-width: 18rem;
+                min-height: 181px;
+                max-height: 181px;
             }
 
-            .card-img-top {
-                transition: all ease-in-out .5s;
-            }
-
-            .card:hover .card-img-top {
-                height: 11rem;
-                box-shadow: -4px 7px 20px;
-                width: 92%;
-                margin-left: 4%;
-                margin-bottom: 1px;
+            .a {
+                text-decoration: auto;
             }
         </style>
-        <div class=" row my-0 mt-2" style="
-        margin: 0;
-    ">
 
-            <div class="col-9 row" style="
-            margin: 0;
-        ">
 
-                <% for(let scholar of data){ %>
+        <div class="row mt-4">
+            <div class="col row">
 
-                    <a class="col-lg-4 col-sm-6 my-2  mt-2 btn " href="scholar/<%=scholar._id%>" style="    border: 0;">
-
-                        <div class="card" style="max-height: 358px;overflow: hidden;">
-                            <img src="<%=scholar.image%>" style="height: 11rem;" class="card-img-top " alt="..."
-                                title="<%=scholar.name%>">
-                            <div class="card-body" style="
-overflow: auto;
-height: 100%;
-">
-                                <h2>
-                                    <%=scholar.name%>
-                                </h2>
-                                <p class="card-text">
-                                    <%=scholar.discr%>
-                                </p>
+                <%for(sub of data){%>
+                    <a class="a col-3" href="/subject/<%=sub.teacherId%>/articles/<%=sub._id%>">
+                        <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
+                            <div class="card-header">
+                                <%=sub.teacherName%>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%=sub.name%>
+                                </h5>
+                                <p class="card-text"><small class="text-muted">
+                                        <img src="https://img.icons8.com/color/512/calendar--v1.png"
+                                            style="width: 20px;">
+                                        <%=sub.date%>
+                                    </small></p>
                             </div>
                         </div>
                     </a>
@@ -50,70 +38,71 @@ height: 100%;
             </div>
             <div class="col-3">
                 <div class="list-group" style="
-    direction: rtl;
-">
+            direction: rtl;
+        ">
                     <a href="/" type="button" class="list-group-item list-group-item-action " aria-current="true">
                         <img src="https://img.icons8.com/fluency/344/cottage.png" style="
-    width: 40px;
-">
+            width: 40px;
+        ">
                         <h4 style="
-    display: inline-block;
-">الرئيسيه</h4>
+            display: inline-block;
+        ">الرئيسيه</h4>
                     </a>
-                    <a href="/scholars" type="button" class="list-group-item list-group-item-action active">
+                    <a href="/scholars" type="button" class="list-group-item list-group-item-action">
                         <img src="https://img.icons8.com/external-ddara-lineal-color-ddara/344/external-Muslim-arabic-man-islam-man-arab-beard-avatar-religion-ddara-lineal-color-ddara.png"
                             style="
-    width: 40px;
-">
+            width: 40px;
+        ">
                         <h4 style="
-    display: inline-block;
-">العلماء والدعاة</h4>
+            display: inline-block;
+        ">العلماء والدعاة</h4>
                     </a>
                     <a href="/moshaf" type="button" class="list-group-item list-group-item-action ">
                         <img src="https://img.icons8.com/external-others-bzzricon-studio/512/external-quran-ramadan-others-bzzricon-studio-2.png"
                             style="
-    width: 40px;
-">
+            width: 40px;
+        ">
                         <h4 style="
-    display: inline-block;
-">المصحف</h4>
+            display: inline-block;
+        ">المصحف</h4>
                     </a>
                     <a href="/anashid" type="button" class="list-group-item list-group-item-action ">
                         <img src="https://img.icons8.com/external-new-flat-dmitry-mirolyubov/512/external-audio-dont-stop-the-music-new-flat-dmitry-mirolyubov.png"
                             style="
-    width: 40px;
-">
+            width: 40px;
+        ">
                         <h4 style="
-    display: inline-block;
-">الاناشيد</h4>
+            display: inline-block;
+        ">الاناشيد</h4>
                     </a>
-                    <a href="/articles" type="button" class="list-group-item list-group-item-action ">
+                    <a href="/articles" type="button" class="list-group-item list-group-item-action active">
                         <img src="https://img.icons8.com/external-flaticons-flat-flat-icons/512/external-articles-finance-flaticons-flat-flat-icons.png"
                             style="
-    width: 40px;
-">
+            width: 40px;
+        ">
                         <h4 style="
-    display: inline-block;
-">المقالات</h4>
+            display: inline-block;
+        ">المقالات</h4>
                     </a>
-                    <a href="/lessons" type="button" class="list-group-item list-group-item-action ">
+                    <a href="/lessons" type="button" class="list-group-item  list-group-item-action ">
                         <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/512/external-video-lesson-online-education-flaticons-lineal-color-flat-icons-3.png"
                             style="
-    width: 40px;
-">
+            width: 40px;
+        ">
                         <h4 style="
-    display: inline-block;
-">الدروس</h4>
+            display: inline-block;
+        ">الدروس</h4>
                     </a>
                     <a href="/audios" type="button" class="list-group-item list-group-item-action ">
                         <img src="https://img.icons8.com/color/512/voice-recognition-scan.png" style="
-    width: 40px;
-">
+            width: 40px;
+        ">
                         <h4 style="
-    display: inline-block;
-">التلاوات</h4>
+            display: inline-block;
+        ">التلاوات</h4>
                     </a>
                 </div>
             </div>
         </div>
+
         <%- include('parts/footer.ejs')%>
