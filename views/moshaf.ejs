@@ -2983,8 +2983,10 @@
                                         Audio($(this).attr("data-name"), $(this).attr("data-aname"), $(this).attr("data-url"))
                                         goToPage(e.page)
                                         $(".play").removeClass("plaing")
-                                        $(".accordion-button").addClass("collapsed")
-                                        $(".accordion-button").attr("aria-expanded", "false")
+                                        for (let i = 0; i < $(".accordion-button").length; i++) {
+
+                                                if (!$($(".accordion-button")[i]).hasClass("collapsed")) { document.getElementsByClassName("accordion-button")[i].click() }
+                                        }
                                         $(".play").removeAttr("disabled")
                                         $(this).addClass("plaing")
                                         $(this).attr("disabled", "")
