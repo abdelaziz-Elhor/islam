@@ -13,7 +13,6 @@ app.get("/scholars", controller.scholars)
 app.get("/moshaf", controller.moshaf)
 app.get("/anashid", controller.getAnashid)
 app.get("/articles", controller.getArticles)
-app.get("/audios", controller.getAudios)
 app.get("/lessons", controller.getLessons)
 app.get("/scholar/:id", controller.getScholar)
 app.use("/subject/:id/:type/:typeid", controller.getInScholar)
@@ -23,7 +22,6 @@ app.use((req, res, next) => {
     res.status(404).render("404", {
         path: req.path
     })
-
 })
 app.listen(process.env.PORT || 7070, () => {
     console.log("go")
