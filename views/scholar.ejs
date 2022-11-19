@@ -1,182 +1,184 @@
 <%- include('parts/header.ejs')%>
-    <style>
-        a {
-            text-decoration: none;
-        }
-    </style>
-    <div class="row mx-0">
+    <%- include('parts/nav.ejs')%>
+        <style>
+            a {
+                text-decoration: none;
+            }
+        </style>
+        <div class="row mx-0">
 
-        <div class="col-8" style="
+            <div class="col-8" style="
         direction: rtl;
     ">
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-less-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-less" type="button" role="tab" aria-controls="pills-less"
-                        aria-selected="true">الدروس</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-audios-tab" data-bs-toggle="pill" data-bs-target="#pills-audios"
-                        type="button" role="tab" aria-controls="pills-audios" aria-selected="false">التلاوات</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link " id="pills-articles-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-articles" type="button" role="tab" aria-controls="pills-articles"
-                        aria-selected="true">المقالات</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link " id="pills-anashid-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-anashid" type="button" role="tab" aria-controls="pills-anashid"
-                        aria-selected="true">الاناشيد</button>
-                </li>
-            </ul>
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-less" role="tabpanel" aria-labelledby="pills-less-tab"
-                    tabindex="0">
-                    <%if(lessons.length!=0){%>
-                        <%for(lesson of lessons){%>
-                            <a href="/subject/<%=scholar._id%>/lessons/<%=lesson._id%>">
-                                <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">
-                                        <%=scholar.name%>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-less-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-less" type="button" role="tab" aria-controls="pills-less"
+                            aria-selected="true">الدروس</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-audios-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-audios" type="button" role="tab" aria-controls="pills-audios"
+                            aria-selected="false">التلاوات</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link " id="pills-articles-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-articles" type="button" role="tab" aria-controls="pills-articles"
+                            aria-selected="true">المقالات</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link " id="pills-anashid-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-anashid" type="button" role="tab" aria-controls="pills-anashid"
+                            aria-selected="true">الاناشيد</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-less" role="tabpanel"
+                        aria-labelledby="pills-less-tab" tabindex="0">
+                        <%if(lessons.length!=0){%>
+                            <%for(lesson of lessons){%>
+                                <a href="/subject/<%=scholar._id%>/lessons/<%=lesson._id%>">
+                                    <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">
+                                            <%=scholar.name%>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <%=lesson.name%>
+                                            </h5>
+                                            <p class="card-text"><small class="text-muted">
+                                                    <img src="https://img.icons8.com/color/512/calendar--v1.png"
+                                                        style="width: 20px;">
+                                                    <%=lesson.date%>
+                                                </small></p>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <%=lesson.name%>
-                                        </h5>
-                                        <p class="card-text"><small class="text-muted">
-                                                <img src="https://img.icons8.com/color/512/calendar--v1.png"
-                                                    style="width: 20px;">
-                                                <%=lesson.date%>
-                                            </small></p>
+                                </a>
+                                <%}%>
+                                    <%}else{%>
+                                        <div class="alert alert-info" role="alert">
+                                            لا يوجد
+                                        </div>
+                                        <%}%>
+                    </div>
+                    <div class="tab-pane fade" id="pills-audios" role="tabpanel" aria-labelledby="pills-audios-tab"
+                        tabindex="0">
+                        <%if(audios.length!=0){%>
+                            <%for(audio of audios){%>
+                                <a href="/subject/<%=scholar._id%>/audios/<%=audio._id%>">
+                                    <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">
+                                            <%=scholar.name%>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <%=audio.name%>
+                                            </h5>
+                                            <p class="card-text"><small class="text-muted">
+                                                    <img src="https://img.icons8.com/color/512/calendar--v1.png"
+                                                        style="width: 20px;">
+                                                    <%=audio.date%>
+                                                </small></p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <%}%>
-                                <%}else{%>
-                                    <div class="alert alert-info" role="alert">
-                                        لا يوجد
+                                </a>
+                                <%}%>
+                                    <%}else{%>
+                                        <div class="alert alert-info" role="alert">
+                                            لا يوجد
+                                        </div>
+                                        <%}%>
+                    </div>
+                    <div class="tab-pane fade" id="pills-articles" role="tabpanel" aria-labelledby="pills-articles-tab"
+                        tabindex="0">
+                        <%if(articles.length!=0){%>
+                            <%for(article of articles){%>
+                                <a href="/subject/<%=scholar._id%>/articles/<%=article._id%>">
+                                    <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">
+                                            <%=scholar.name%>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <%=article.name%>
+                                            </h5>
+                                            <p class="card-text"><small class="text-muted">
+                                                    <img src="https://img.icons8.com/color/512/calendar--v1.png"
+                                                        style="width: 20px;">
+                                                    <%=article.date%>
+                                                </small></p>
+                                        </div>
                                     </div>
-                                    <%}%>
-                </div>
-                <div class="tab-pane fade" id="pills-audios" role="tabpanel" aria-labelledby="pills-audios-tab"
-                    tabindex="0">
-                    <%if(audios.length!=0){%>
-                        <%for(audio of audios){%>
-                            <a href="/subject/<%=scholar._id%>/audios/<%=audio._id%>">
-                                <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">
-                                        <%=scholar.name%>
+                                </a>
+                                <%}%>
+                                    <%}else{%>
+                                        <div class="alert alert-info" role="alert">
+                                            لا يوجد
+                                        </div>
+                                        <%}%>
+                    </div>
+                    <div class="tab-pane fade" id="pills-anashid" role="tabpanel" aria-labelledby="pills-anashid-tab"
+                        tabindex="0">
+                        <%if(anashid.length!=0){%>
+                            <%for(nashid of anashid){%>
+                                <a href="/subject/<%=scholar._id%>/anashid/<%=nashid._id%>">
+                                    <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">
+                                            <%=scholar.name%>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <%=nashid.name%>
+                                            </h5>
+                                            <p class="card-text"><small class="text-muted">
+                                                    <img src="https://img.icons8.com/color/512/calendar--v1.png"
+                                                        style="width: 20px;">
+                                                    <%=nashid.date%>
+                                                </small></p>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <%=audio.name%>
-                                        </h5>
-                                        <p class="card-text"><small class="text-muted">
-                                                <img src="https://img.icons8.com/color/512/calendar--v1.png"
-                                                    style="width: 20px;">
-                                                <%=audio.date%>
-                                            </small></p>
-                                    </div>
-                                </div>
-                            </a>
-                            <%}%>
-                                <%}else{%>
-                                    <div class="alert alert-info" role="alert">
-                                        لا يوجد
-                                    </div>
-                                    <%}%>
-                </div>
-                <div class="tab-pane fade" id="pills-articles" role="tabpanel" aria-labelledby="pills-articles-tab"
-                    tabindex="0">
-                    <%if(articles.length!=0){%>
-                        <%for(article of articles){%>
-                            <a href="/subject/<%=scholar._id%>/articles/<%=article._id%>">
-                                <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">
-                                        <%=scholar.name%>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <%=article.name%>
-                                        </h5>
-                                        <p class="card-text"><small class="text-muted">
-                                                <img src="https://img.icons8.com/color/512/calendar--v1.png"
-                                                    style="width: 20px;">
-                                                <%=article.date%>
-                                            </small></p>
-                                    </div>
-                                </div>
-                            </a>
-                            <%}%>
-                                <%}else{%>
-                                    <div class="alert alert-info" role="alert">
-                                        لا يوجد
-                                    </div>
-                                    <%}%>
-                </div>
-                <div class="tab-pane fade" id="pills-anashid" role="tabpanel" aria-labelledby="pills-anashid-tab"
-                    tabindex="0">
-                    <%if(anashid.length!=0){%>
-                        <%for(nashid of anashid){%>
-                            <a href="/subject/<%=scholar._id%>/anashid/<%=nashid._id%>">
-                                <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">
-                                        <%=scholar.name%>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <%=nashid.name%>
-                                        </h5>
-                                        <p class="card-text"><small class="text-muted">
-                                                <img src="https://img.icons8.com/color/512/calendar--v1.png"
-                                                    style="width: 20px;">
-                                                <%=nashid.date%>
-                                            </small></p>
-                                    </div>
-                                </div>
-                            </a>
-                            <%}%>
-                                <%}else{%>
-                                    <div class="alert alert-info" role="alert">
-                                        لا يوجد
-                                    </div>
-                                    <%}%>
+                                </a>
+                                <%}%>
+                                    <%}else{%>
+                                        <div class="alert alert-info" role="alert">
+                                            لا يوجد
+                                        </div>
+                                        <%}%>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="container-fluid" style="
+            <div class="col">
+                <div class="container-fluid" style="
             direction: rtl;
             ">
-                <div class="card bg-info mb-3" style="max-width: 540px;
+                    <div class="card bg-info mb-3" style="max-width: 540px;
                 direction: rtl;
             ">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src=" <%=scholar.image %>" style="
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src=" <%=scholar.image %>" style="
                                 width: 100%;
                             " class="img-fluid rounded-end" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <%=scholar.name %>
-                                </h5>
-                                <p class="card-text" style="
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%=scholar.name %>
+                                    </h5>
+                                    <p class="card-text" style="
                                     max-height: 176px;
                                     overflow: auto;
                                 ">
-                                    <%=scholar.discr %>
-                                </p>
+                                        <%=scholar.discr %>
+                                    </p>
 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <%- include('parts/footer.ejs')%>
+        <%- include('parts/footer.ejs')%>
