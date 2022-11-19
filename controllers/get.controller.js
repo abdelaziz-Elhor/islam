@@ -1,9 +1,14 @@
 const Scholar = require("../models/scholar.model");
+const Anashid = require("../models/nashids.model");
+const Article = require("../models/articles.model");
+const Audio = require("../models/audios.model");
+const Lesson = require("../models/lessons.model");
 const Moshaf = require("../models/msahf.model");
 
 let url = "mongodb+srv://zizoBoy:741852@islam-data.iovdiwe.mongodb.net/all-data?retryWrites=true&w=majority"
 
 const mongoose = require("mongoose");
+const mongodb = require("mongodb");
 
 exports.getAll = (req, res, next) => {
     res.render("index")
@@ -19,19 +24,28 @@ exports.scholars = (req, res, next) => {
         })
 
     })
-
-
-
 }
 exports.getScholar = (req, res, next) => {
     mongoose.connect(url, { useNewUrlParser: true }, (err) => {
         Scholar.findOne({ _id: req.params.id }, (err, scholar) => {
-
-            mongoose.disconnect()
-            res.render("scholar", {
-                scholar: scholar
+            Lesson.find({ teacherId: req.params.id }, (err, lessons) => {
+                Anashid.find({ teacherId: req.params.id }, (err, anashid) => {
+                    Audio.find({ teacherId: req.params.id }, (err, audios) => {
+                        Article.find({ teacherId: req.params.id }, (err, articles) => {
+                            res.render("scholar", {
+                                scholar: scholar,
+                                audios: audios,
+                                lessons: lessons,
+                                articles: articles,
+                                anashid: anashid
+                            })
+                        })
+                    })
+                })
             })
+
         })
+
 
     })
 
@@ -41,22 +55,24 @@ exports.getScholar = (req, res, next) => {
 
 exports.getInScholar = (req, res, next) => {
     mongoose.connect(url, { useNewUrlParser: true }, (err) => {
-        Scholar.findOne({ _id: req.params.id }, (err, user) => {
-            console.log(req.params.id, req.params.type, req.params.typeid, req.params[0])
-            let subject = user[req.params.type].find(e => e.id == req.params.typeid)
-            console.log(subject)
-            res.render("subject", {
-                subject: subject,
-                man: user,
-                type: req.params.type
-            })
-            mongoose.disconnect()
+        let type;
+        if (req.params.type == "lessons") { type = Lesson } else
+            if (req.params.type == "audios") { type = Audio } else
+                if (req.params.type == "articles") { type = Article } else
+                    if (req.params.type == "anashid") { type = Anashid }
+        type.findOne({ _id: req.params.typeid }, (err, subject) => {
 
+            Scholar.findOne({ _id: req.params.id }, (err, man) => {
+
+                res.render("subject", {
+                    subject: subject,
+                    man: man,
+                    type: req.params.type
+                })
+            })
         })
 
     })
-
-
 
 }
 exports.goAdd = (req, res, next) => {

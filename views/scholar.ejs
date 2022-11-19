@@ -33,9 +33,9 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-less" role="tabpanel" aria-labelledby="pills-less-tab"
                     tabindex="0">
-                    <%if(scholar.lessons.length!=0){%>
-                        <%for(lesson of scholar.lessons){%>
-                            <a href="/subject/<%=scholar._id%>/lessons/<%=lesson.id%>">
+                    <%if(lessons.length!=0){%>
+                        <%for(lesson of lessons){%>
+                            <a href="/subject/<%=scholar._id%>/lessons/<%=lesson._id%>">
                                 <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
                                     <div class="card-header">
                                         <%=scholar.name%>
@@ -61,9 +61,9 @@
                 </div>
                 <div class="tab-pane fade" id="pills-audios" role="tabpanel" aria-labelledby="pills-audios-tab"
                     tabindex="0">
-                    <%if(scholar.audios.length!=0){%>
-                        <%for(audio of scholar.audios){%>
-                            <a href="/subject/<%=scholar._id%>/audios/<%=audio.id%>">
+                    <%if(audios.length!=0){%>
+                        <%for(audio of audios){%>
+                            <a href="/subject/<%=scholar._id%>/audios/<%=audio._id%>">
                                 <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
                                     <div class="card-header">
                                         <%=scholar.name%>
@@ -89,9 +89,9 @@
                 </div>
                 <div class="tab-pane fade" id="pills-articles" role="tabpanel" aria-labelledby="pills-articles-tab"
                     tabindex="0">
-                    <%if(scholar.articles.length!=0){%>
-                        <%for(article of scholar.articles){%>
-                            <a href="/subject/<%=scholar._id%>/articles/<%=article.id%>">
+                    <%if(articles.length!=0){%>
+                        <%for(article of articles){%>
+                            <a href="/subject/<%=scholar._id%>/articles/<%=article._id%>">
                                 <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
                                     <div class="card-header">
                                         <%=scholar.name%>
@@ -117,9 +117,9 @@
                 </div>
                 <div class="tab-pane fade" id="pills-anashid" role="tabpanel" aria-labelledby="pills-anashid-tab"
                     tabindex="0">
-                    <%if(scholar.anashid.length!=0){%>
-                        <%for(nashid of scholar.anashid){%>
-                            <a href="/subject/<%=scholar._id%>/anashid/<%=nashid.id%>">
+                    <%if(anashid.length!=0){%>
+                        <%for(nashid of anashid){%>
+                            <a href="/subject/<%=scholar._id%>/anashid/<%=nashid._id%>">
                                 <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
                                     <div class="card-header">
                                         <%=scholar.name%>
