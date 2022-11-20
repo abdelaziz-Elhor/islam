@@ -26,3 +26,7 @@
 .row {
     margin: 0;
 }
+
+.card.text-center.text-bg-dark.mb-3 .card-body {
+    overflow: auto;
+}
