@@ -6,6 +6,7 @@
 ### Techniques
  - node js
  - express
+ - mvs
  - ejs
  - mongoose
  - bootstrap@5.2.0
