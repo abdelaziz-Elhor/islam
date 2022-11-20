@@ -3,8 +3,8 @@
         <style>
             .card.text-center.text-bg-dark.mb-3 {
                 max-width: 18rem;
-                min-height: 181px;
-                max-height: 181px;
+                min-height: 385px;
+                max-height: 385px;
             }
 
             .a {
@@ -17,19 +17,22 @@
             <div class="col row">
 
                 <%for(sub of data){%>
-                    <a class="a col-3" href="/subject/<%=sub.teacherId%>/lessons/<%=sub._id%>">
-                        <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
+                    <a class="a col-6" href="/photos/<%= sub._id%>">
+                        <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;overflow: hidden;">
                             <div class="card-header">
-                                <%=sub.teacherName%>
+                                <%= sub.name%>
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    <%=sub.name%>
+                                    <img src=" <%= sub.image%>" alt="" style="
+    width: 100%;
+    max-height: 289px;
+">
                                 </h5>
                                 <p class="card-text"><small class="text-muted">
                                         <img src="https://img.icons8.com/color/512/calendar--v1.png"
                                             style="width: 20px;">
-                                        <%=sub.date%>
+                                        <%= sub.date%>
                                     </small></p>
                             </div>
                         </div>

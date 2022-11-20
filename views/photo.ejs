@@ -1,0 +1,53 @@
+<%- include('parts/header.ejs')%>
+    <%- include('parts/nav.ejs')%>
+
+
+        <div class="row mt-4">
+            <div class="col-3"></div>
+            <div class="col">
+                <div class="card text-bg-info text-center">
+                    <div class="card-header">
+                        <%=data.name%>
+                    </div>
+                    <div class="card-body">
+
+                        <h5 class="card-title"></h5>
+                        <p class="card-text"><img class="open" style="width: 100%" src="<%=data.image%>" alt=""></p>
+
+                    </div>
+                    <div class="card-footer link-danger bg-text-muted">
+                        <%=data.date%>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <%- include('parts/list.ejs')%>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            function goodremove (el) {
+                $(el).slideUp(500, function () {
+                    $(el).remove()
+                })
+
+            }
+            $("img.open").on("click", function () {
+                $("body").append(`
+        <div class="opened" onclick="goodremove(this)" style="
+    width: 100%;
+    text-align: center;
+    background-color: #0000008f;
+    position: fixed;
+    top: 0;
+    z-index: 11111111111111111111;
+    display: none;
+"><img src="${$("img.open").attr("src")}" style="
+    width:  51%;
+"></div>
+        `)
+                $(".opened").fadeIn(500)
+
+            })
+        </script>
+        <%- include('parts/footer.ejs')%>

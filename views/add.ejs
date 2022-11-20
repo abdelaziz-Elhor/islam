@@ -29,39 +29,105 @@
 
                 </div>
             </nav>
+
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
-                    tabindex="0">
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link active" id="nav-add1-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
-                                aria-selected="true"> أضف عالم</button>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                أضف عالم
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <form action="/addMan" method="post">
+                                    <div class="input-group mb-3">
+
+                                        <input type="text" name="name" class="form-control" placeholder="الاسم"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-3">
+
+                                        <input type="text" name="image" class="form-control inputImage"
+                                            placeholder="صوره" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <img onerror="$('.inputImage').val('https://img.icons8.com/external-ddara-lineal-color-ddara/344/external-Muslim-arabic-man-islam-man-arab-beard-avatar-religion-ddara-lineal-color-ddara.png');$(this).attr('src','https://img.icons8.com/external-ddara-lineal-color-ddara/344/external-Muslim-arabic-man-islam-man-arab-beard-avatar-religion-ddara-lineal-color-ddara.png')"
+                                        class="manimage" style="width: 90px" alt="" srcset="">
+                                    <div class="input-group mb-3">
+
+                                        <input type="text" name="discr" class="form-control" placeholder="تعريف"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">أضف</button>
+                                </form>
+                            </div>
                         </div>
-                    </nav>
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-                            aria-labelledby="nav-add1-tab" tabindex="0">
-                            <form action="/addMan" method="post">
-                                <div class="input-group mb-3">
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                اضف شيئ للعالم
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <select class="form-select men" aria-label="Default select example">
+                                    <option selected disabled>العلماء</option>
+                                    <% for(man of mans){ %>
+                                        <option value='{"i":"<%= man._id%>","n":"<%= man.name%>"}'>
+                                            <%= man.name%>
+                                        </option>
 
-                                    <input type="text" name="name" class="form-control" placeholder="الاسم"
-                                        aria-label="Username" aria-describedby="basic-addon1">
-                                </div>
-                                <div class="input-group mb-3">
+                                        <% }%>
 
-                                    <input type="text" name="image" class="form-control" placeholder="صوره"
-                                        aria-label="Username" aria-describedby="basic-addon1">
-                                </div>
-                                <div class="input-group mb-3">
+                                </select>
+                                <select class="form-select madh" aria-label="Default select example">
+                                    <option selected disabled>الماده</option>
+                                    <option value="lessons"> درس</option>
+                                    <option value="articles"> مقال</option>
+                                    <option value="anashid"> نشيد</option>
+                                </select>
+                                <form action="/addinMan" method="post">
 
-                                    <input type="text" name="discr" class="form-control" placeholder="تعريف"
-                                        aria-label="Username" aria-describedby="basic-addon1">
+                                    <div class="postbody"></div>
+
+                                    <button type="submit" class="btn btn-primary">أضف</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                    aria-controls="flush-collapseThree">
+                                    أضف تصميم
+                                </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <form action="/addinMan" method="post">
+
+                                        <div class="postbody">
+                                            <input type="text" name="name" class="form-control" placeholder="الاسم"
+                                                aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <input type="text" name="image" class="form-control" placeholder="الصوره"
+                                                aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
                                 </div>
+                                <input type="hidden" name="type" value="photos">
                                 <button type="submit" class="btn btn-primary">أضف</button>
-                            </form>
+                                </form>
+                            </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
@@ -73,4 +139,56 @@
 
             </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script>
+            keyup($(".inputImage"), $(".manimage"))
+            function keyup (input, img) {
+                $(input).keyup(() => {
+                    $(img).attr("src", $(input).val())
+                })
+                $(input).keydown(() => {
+                    $(img).attr("src", $(input).val())
+                })
+            }
+            $(".madh").change(function () {
+
+                if ($(".men").val()) {
+                    e = JSON.parse($(".men").val())
+                    if ($(".madh").val() == "lessons" || $(".madh").val() == "anashid") {
+                        $(".postbody").html(`
+                <div class="input-group mb-3">
+<input type="text" name="name" class="form-control" placeholder="الاسم"
+    aria-label="Username" aria-describedby="basic-addon1">
+</div>
+                <div class="input-group mb-3">
+<input type="text" name="url" class="form-control" placeholder="لينك"
+    aria-label="Username" aria-describedby="basic-addon1">
+</div>
+<input type="hidden" name="teacherId" value="${e.i}">
+<input type="hidden" name="teacherName" value="${e.n}">
+<input type="hidden" name="type" value="${$(".madh").val()}">
+`)
+                    } else {
+                        $(".postbody").html(`
+                <div class="input-group mb-3">
+<input type="text" name="name" class="form-control" placeholder="الاسم"
+    aria-label="Username" aria-describedby="basic-addon1">
+</div>
+                <div class="input-group mb-3">
+                    <div class="form-floating">
+  <textarea class="form-control" name="text" placeholder="النص" id="floatingTextarea2" style="height: 100px"></textarea>
+  <label for="floatingTextarea2">النص</label>
+  </div>
+  </div>
+  <input type="hidden" name="teacherId" value="${e.i}">
+  <input type="hidden" name="teacherName" value="${e.n}">
+  <input type="hidden" name="type" value="${$(".madh").val()}">
+`)
+                    }
+                }
+
+            })
+        </script>
+
         <%- include('parts/footer.ejs')%>

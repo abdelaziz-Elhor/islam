@@ -1,9 +1,10 @@
 const Scholar = require("../models/scholar.model");
 const Anashid = require("../models/nashids.model");
 const Article = require("../models/articles.model");
-const Audio = require("../models/audios.model");
+
 const Lesson = require("../models/lessons.model");
 const Moshaf = require("../models/msahf.model");
+const Photos = require("../models/photos.model");
 
 let url = "mongodb+srv://zizoBoy:741852@islam-data.iovdiwe.mongodb.net/all-data?retryWrites=true&w=majority"
 
@@ -11,16 +12,29 @@ const mongoose = require("mongoose");
 const mongodb = require("mongodb");
 
 exports.getAll = (req, res, next) => {
-    res.render("index")
+    res.render("index", {
+        path: "/"
+    })
+
 }
 exports.scholars = (req, res, next) => {
     mongoose.connect(url, { useNewUrlParser: true }, (err) => {
         Scholar.find({}, (err, scholars) => {
 
-            mongoose.disconnect()
+            scholars.sort(function (a, b) {
+                let x = a.name.toLowerCase();
+                let y = b.name.toLowerCase();
+                if (x < y) { return -1; }
+                if (x > y) { return 1; }
+                return 0;
+            });
             res.render("scholars", {
                 data: scholars,
+                path: req.path
             })
+            mongoose.disconnect()
+
+
         })
 
     })
@@ -30,17 +44,17 @@ exports.getScholar = (req, res, next) => {
         Scholar.findOne({ _id: req.params.id }, (err, scholar) => {
             Lesson.find({ teacherId: req.params.id }, (err, lessons) => {
                 Anashid.find({ teacherId: req.params.id }, (err, anashid) => {
-                    Audio.find({ teacherId: req.params.id }, (err, audios) => {
-                        Article.find({ teacherId: req.params.id }, (err, articles) => {
-                            res.render("scholar", {
-                                scholar: scholar,
-                                audios: audios,
-                                lessons: lessons,
-                                articles: articles,
-                                anashid: anashid
-                            })
+
+                    Article.find({ teacherId: req.params.id }, (err, articles) => {
+                        res.render("scholar", {
+                            scholar: scholar,
+                            lessons: lessons,
+                            articles: articles,
+                            anashid: anashid,
+                            path: req.path
                         })
                     })
+
                 })
             })
 
@@ -67,7 +81,8 @@ exports.getInScholar = (req, res, next) => {
                 res.render("subject", {
                     subject: subject,
                     man: man,
-                    type: req.params.type
+                    type: req.params.type,
+                    path: req.path
                 })
             })
         })
@@ -102,6 +117,7 @@ exports.moshaf = (req, res, next) => {
             mongoose.disconnect()
             res.render("moshaf", {
                 data: msahf,
+                path: req.path
             })
         })
     })
@@ -114,23 +130,13 @@ exports.getAnashid = (req, res, next) => {
             mongoose.disconnect()
             res.render("anashid", {
                 data: data,
+                path: req.path
             })
         })
     })
 
 }
-exports.getAudios = (req, res, next) => {
-    mongoose.connect(url, { useNewUrlParser: true }, (err) => {
-        Audio.find({}, (err, data) => {
 
-            mongoose.disconnect()
-            res.render("audios", {
-                data: data,
-            })
-        })
-    })
-
-}
 exports.getArticles = (req, res, next) => {
     mongoose.connect(url, { useNewUrlParser: true }, (err) => {
         Article.find({}, (err, data) => {
@@ -138,6 +144,7 @@ exports.getArticles = (req, res, next) => {
             mongoose.disconnect()
             res.render("articles", {
                 data: data,
+                path: req.path
             })
         })
     })
@@ -151,6 +158,31 @@ exports.getLessons = (req, res, next) => {
             mongoose.disconnect()
             res.render("lessons", {
                 data: data,
+                path: req.path
+            })
+        })
+    })
+}
+exports.getPhotos = (req, res, next) => {
+    mongoose.connect(url, { useNewUrlParser: true }, (err) => {
+        Photos.find({}, (err, data) => {
+
+            mongoose.disconnect()
+            res.render("photos", {
+                data: data,
+                path: req.path
+            })
+        })
+    })
+}
+exports.getOnePhoto = (req, res, next) => {
+    mongoose.connect(url, { useNewUrlParser: true }, (err) => {
+        Photos.findOne({ _id: req.params.id }, (err, data) => {
+
+            mongoose.disconnect()
+            res.render("photo", {
+                data: data,
+                path: "/photos"
             })
         })
     })

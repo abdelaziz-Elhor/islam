@@ -16,11 +16,7 @@
                             data-bs-target="#pills-less" type="button" role="tab" aria-controls="pills-less"
                             aria-selected="true">الدروس</button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-audios-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-audios" type="button" role="tab" aria-controls="pills-audios"
-                            aria-selected="false">التلاوات</button>
-                    </li>
+
                     <li class="nav-item" role="presentation">
                         <button class="nav-link " id="pills-articles-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-articles" type="button" role="tab" aria-controls="pills-articles"
@@ -61,34 +57,7 @@
                                         </div>
                                         <%}%>
                     </div>
-                    <div class="tab-pane fade" id="pills-audios" role="tabpanel" aria-labelledby="pills-audios-tab"
-                        tabindex="0">
-                        <%if(audios.length!=0){%>
-                            <%for(audio of audios){%>
-                                <a href="/subject/<%=scholar._id%>/audios/<%=audio._id%>">
-                                    <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
-                                        <div class="card-header">
-                                            <%=scholar.name%>
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                <%=audio.name%>
-                                            </h5>
-                                            <p class="card-text"><small class="text-muted">
-                                                    <img src="https://img.icons8.com/color/512/calendar--v1.png"
-                                                        style="width: 20px;">
-                                                    <%=audio.date%>
-                                                </small></p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <%}%>
-                                    <%}else{%>
-                                        <div class="alert alert-info" role="alert">
-                                            لا يوجد
-                                        </div>
-                                        <%}%>
-                    </div>
+
                     <div class="tab-pane fade" id="pills-articles" role="tabpanel" aria-labelledby="pills-articles-tab"
                         tabindex="0">
                         <%if(articles.length!=0){%>
