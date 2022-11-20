@@ -31,7 +31,7 @@ exports.addMan = (req, res, next) => {
             discr: req.body.discr,
         })
         newScholar.save((err, resu) => {
-            res.redirect("/")
+            res.redirect("/add")
         })
     })
 
@@ -48,7 +48,7 @@ exports.addInMan = (req, res, next) => {
     mongoose.connect(url, { useNewUrlParser: true }, (err) => {
         let newthing = new type(e)
         newthing.save((err, resu) => {
-            res.redirect("/")
+            res.redirect("/add")
         })
     })
 }
