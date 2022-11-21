@@ -6,6 +6,7 @@ const Lesson = require("../models/lessons.model");
 const Moshaf = require("../models/msahf.model");
 const Photos = require("../models/photos.model");
 const Quotes = require("../models/quotes.model");
+const Complaints = require("../models/complaints.model");
 
 let url = "mongodb+srv://zizoBoy:741852@islam-data.iovdiwe.mongodb.net/all-data?retryWrites=true&w=majority"
 
@@ -180,6 +181,17 @@ exports.getQuotes = (req, res, next) => {
         Quotes.find({}, (err, data) => {
             mongoose.disconnect()
             res.render("quotes", {
+                data: data,
+                path: req.path
+            })
+        })
+    })
+}
+exports.getComplaints = (req, res, next) => {
+    mongoose.connect(url, { useNewUrlParser: true }, (err) => {
+        Complaints.find({}, (err, data) => {
+            mongoose.disconnect()
+            res.render("complaints", {
                 data: data,
                 path: req.path
             })

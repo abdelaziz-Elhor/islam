@@ -1,0 +1,82 @@
+<%- include('parts/header.ejs')%>
+    <%- include('parts/nav.ejs')%>
+        <style>
+            .card.col-12.text-center.bg-primary.mb-3 {
+                max-height: 285px;
+                padding: 0;
+
+
+            }
+
+            .card .card-body {
+                overflow: auto;
+            }
+
+            .a {
+                text-decoration: auto;
+            }
+        </style>
+
+
+        <div class="row mt-4">
+
+            <div class="col-2"></div>
+            <div class="col row">
+                <form action="/addComplaint" class="bg-warning rounded " method="post" style="direction: rtl;">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">اسمك</label>
+                        <input type="text" name="name" class="form-control" id="exampleFormControlInput1"
+                            placeholder="الاسم">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">اللينك</label>
+                        <input type="url" name="url" class="form-control" id="exampleFormControlInput1"
+                            placeholder="url">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">المشكله</label>
+                        <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+
+                    <button id="sub" style="display: none;" type="submit"></button>
+                </form>
+                <button class="btn btn-info ok mb-5">تم</button>
+                <%for(sub of data){%>
+                    <div class="card col-12 text-center bg-warning mb-3" style="overflow: hidden;">
+                        <div class="card-header">
+                            <%= sub.name%>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+
+                            </h5>
+                            <p class="card-text">
+                                <%= sub.text%>
+                                    <br>
+
+                            </p>
+                            <small class="text-muted">
+                                <img src="https://img.icons8.com/color/512/calendar--v1.png" style="width: 20px;">
+                                <%= sub.date%>
+                            </small>
+                        </div>
+                    </div>
+                    </a>
+                    <%}%>
+            </div>
+            <div class="col-3">
+                <%- include('parts/list.ejs')%>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+
+            $(".ok").on("click", function () {
+                if ($("#exampleFormControlInput1").val().length > 2 && $("#exampleFormControlTextarea1").val().length > 3) {
+                    document.getElementById("sub").click()
+                } else {
+                    alert("يجب ملئ المدخلات جيداً")
+                }
+            })
+        </script>
+        <%- include('parts/footer.ejs')%>

@@ -6,6 +6,7 @@ const Lesson = require("../models/lessons.model");
 const Moshaf = require("../models/msahf.model");
 const Photos = require("../models/photos.model");
 const Quotes = require("../models/quotes.model");
+const Complaints = require("../models/complaints.model");
 
 let url = "mongodb+srv://zizoBoy:741852@islam-data.iovdiwe.mongodb.net/all-data?retryWrites=true&w=majority"
 
@@ -72,6 +73,17 @@ exports.addQuotes = (req, res, next) => {
         let newquotes = new Quotes(e)
         newquotes.save((err, resu) => {
             res.redirect("/quotes")
+        })
+    })
+}
+exports.addComplaint = (req, res, next) => {
+    let d = new Date()
+    let e = req.body
+    e.date = d.toLocaleDateString()
+    mongoose.connect(url, { useNewUrlParser: true }, (err) => {
+        let newquotes = new Complaints(e)
+        newquotes.save((err, resu) => {
+            res.redirect("/")
         })
     })
 }
