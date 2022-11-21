@@ -11,6 +11,19 @@
                 direction: rtl;
 
             }
+
+            .fade:not(.show) {
+                opacity: 0;
+                display: none;
+            }
+
+            .fade.show {
+                display: block;
+            }
+
+            .btn-danger {
+                margin: 5px;
+            }
         </style>
         <div class="container mt-2 bg-info" style="
         min-height: 345px;
@@ -30,7 +43,8 @@
                 </div>
             </nav>
 
-            <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+                tabindex="0">
                 <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
@@ -130,14 +144,95 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
-                    tabindex="0">
-                    delet</div>
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"
-                    tabindex="0">
-                    edit</div>
-
             </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                إحذف عالم
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+
+                                <p>إضغط للحذف</p>
+                                <% for(man of mans){ %>
+                                    <a class="btn btn-danger " href="/deleteMan/<%= man._id%>">
+                                        <%= man.name%>
+                                    </a>
+
+                                    <% }%>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                إحذف شيئ في عالم
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <h3>الاناشيد</h3>
+                                <% for(nashid of anashid){ %>
+                                    <a class="btn btn-danger " href="/delete/anashid/<%= nashid._id%>">
+
+                                        <%= nashid.teacherName%>
+                                            <br>
+                                            <%= nashid.name%>
+                                    </a>
+
+                                    <% }%>
+                                        <h3>المقالات</h3>
+                                        <% for(article of articles){ %>
+                                            <a class="btn btn-danger " href="/delete/articles/<%= article._id%>">
+
+                                                <%= article.teacherName%>
+                                                    <br>
+                                                    <%= article.name%>
+                                            </a>
+
+                                            <% }%>
+                                                <h3>الدروس</h3>
+                                                <% for(lesson of lessons){ %>
+                                                    <a class="btn btn-danger " href="/delete/lessons/<%= lesson._id%>">
+
+                                                        <%= lesson.teacherName%>
+                                                            <br>
+                                                            <%= lesson.name%>
+                                                    </a>
+
+                                                    <% }%>
+                                                        <h3>التصميمات</h3>
+                                                        <% for(photo of photos){ %>
+                                                            <a class="btn btn-danger "
+                                                                href="/delete/photos/<%= photo._id%>">
+
+                                                                <br>
+                                                                <%= photo.name%>
+                                                            </a>
+
+                                                            <% }%>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+                edit</div>
+
+        </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

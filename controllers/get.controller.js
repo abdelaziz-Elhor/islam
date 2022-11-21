@@ -5,6 +5,7 @@ const Article = require("../models/articles.model");
 const Lesson = require("../models/lessons.model");
 const Moshaf = require("../models/msahf.model");
 const Photos = require("../models/photos.model");
+const Quotes = require("../models/quotes.model");
 
 let url = "mongodb+srv://zizoBoy:741852@islam-data.iovdiwe.mongodb.net/all-data?retryWrites=true&w=majority"
 
@@ -44,7 +45,6 @@ exports.getScholar = (req, res, next) => {
         Scholar.findOne({ _id: req.params.id }, (err, scholar) => {
             Lesson.find({ teacherId: req.params.id }, (err, lessons) => {
                 Anashid.find({ teacherId: req.params.id }, (err, anashid) => {
-
                     Article.find({ teacherId: req.params.id }, (err, articles) => {
                         res.render("scholar", {
                             scholar: scholar,
@@ -104,7 +104,7 @@ exports.addMan = (req, res, next) => {
         newScholar.save((err, resu) => {
 
 
-            res.redirect("/")
+            res.redirect("/add/zizo/2009741852")
         })
     })
 
@@ -169,6 +169,17 @@ exports.getPhotos = (req, res, next) => {
 
             mongoose.disconnect()
             res.render("photos", {
+                data: data,
+                path: req.path
+            })
+        })
+    })
+}
+exports.getQuotes = (req, res, next) => {
+    mongoose.connect(url, { useNewUrlParser: true }, (err) => {
+        Quotes.find({}, (err, data) => {
+            mongoose.disconnect()
+            res.render("quotes", {
                 data: data,
                 path: req.path
             })

@@ -1,0 +1,65 @@
+<%- include('parts/header.ejs')%>
+    <%- include('parts/nav.ejs')%>
+        <style>
+            .card.col-12.text-center.bg-primary.mb-3 {
+                max-height: 285px;
+                padding: 0;
+
+
+            }
+
+            .card .card-body {
+                overflow: auto;
+            }
+
+            .a {
+                text-decoration: auto;
+            }
+        </style>
+
+
+        <div class="row mt-4">
+
+            <div class="col-2"></div>
+            <div class="col row">
+                <form action="/addQuotes" class="bg-warning rounded mb-5" method="post" style="direction: rtl;">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">اسمك</label>
+                        <input type="text" name="name" class="form-control" id="exampleFormControlInput1"
+                            placeholder="الاسم">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">النص</label>
+                        <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <button class=" btn btn-info" type="submit">تم</button>
+                </form>
+                <%for(sub of data){%>
+                    <div class="card col-12 text-center bg-primary mb-3" style="overflow: hidden;">
+                        <div class="card-header">
+                            <%= sub.name%>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+
+                            </h5>
+                            <p class="card-text">
+                                <%= sub.text%>
+                                    <br>
+
+                            </p>
+                            <small class="text-muted">
+                                <img src="https://img.icons8.com/color/512/calendar--v1.png" style="width: 20px;">
+                                <%= sub.date%>
+                            </small>
+                        </div>
+                    </div>
+                    </a>
+                    <%}%>
+            </div>
+            <div class="col-3">
+                <%- include('parts/list.ejs')%>
+            </div>
+        </div>
+
+        <%- include('parts/footer.ejs')%>
