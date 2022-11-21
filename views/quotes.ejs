@@ -32,7 +32,8 @@
                         <label for="exampleFormControlTextarea1" class="form-label">النص</label>
                         <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
-                    <button class=" btn btn-info" type="submit">تم</button>
+                    <button class="btn btn-info ok">تم</button>
+                    <button id="sub" style="display: none;" type="submit"></button>
                 </form>
                 <%for(sub of data){%>
                     <div class="card col-12 text-center bg-primary mb-3" style="overflow: hidden;">
@@ -61,5 +62,14 @@
                 <%- include('parts/list.ejs')%>
             </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+        <script>
+
+            $(".ok").on("click", function () {
+                if ($("#exampleFormControlInput1").val().length > 2 && $("#exampleFormControlTextarea1").val().length > 3) {
+                    document.getElementById("sub").click()
+                }
+            })
+        </script>
         <%- include('parts/footer.ejs')%>
