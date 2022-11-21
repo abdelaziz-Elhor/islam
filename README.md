@@ -1,14 +1,14 @@
 
-# islam
+# Islamic site
 
-## islamic site
+## 
 
-### Techniques
- - node js
- - express
- - mvs
- - ejs
- - mongoose
+### useing
+ - node js v13.14.0
+ - express v4.18.1
+ - mvc
+ - ejs 3.1.8
+ - mongoose v6.6.1
  - bootstrap@5.2.0
 
 <p align="center">
