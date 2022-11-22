@@ -22,10 +22,10 @@ exports.getAll = (req, res, next) => {
 exports.scholars = (req, res, next) => {
     mongoose.connect(url, { useNewUrlParser: true }, (err) => {
         Scholar.find({}, (err, scholars) => {
-
+            let arr = "أابتثجحخدذرزسشصضطظعغفقكلمنوهي"
             scholars.sort(function (a, b) {
-                let x = a.name.toLowerCase();
-                let y = b.name.toLowerCase();
+                let x = arr.indexOf(a.name.trim()[0])
+                let y = arr.indexOf(b.name.trim()[0])
                 if (x < y) { return -1; }
                 if (x > y) { return 1; }
                 return 0;
