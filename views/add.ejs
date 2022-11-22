@@ -230,7 +230,106 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-                edit</div>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                أضف عالم
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <form action="/addMan" method="post">
+                                    <div class="input-group mb-3">
+
+                                        <input type="text" name="name" class="form-control" placeholder="الاسم"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-3">
+
+                                        <input type="text" name="image" class="form-control inputImage"
+                                            placeholder="صوره" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <img onerror="$('.inputImage').val('https://img.icons8.com/external-ddara-lineal-color-ddara/344/external-Muslim-arabic-man-islam-man-arab-beard-avatar-religion-ddara-lineal-color-ddara.png');$(this).attr('src','https://img.icons8.com/external-ddara-lineal-color-ddara/344/external-Muslim-arabic-man-islam-man-arab-beard-avatar-religion-ddara-lineal-color-ddara.png')"
+                                        class="manimage" style="width: 90px" alt="" srcset="">
+                                    <div class="input-group mb-3">
+
+                                        <input type="text" name="discr" class="form-control" placeholder="تعريف"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">أضف</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                اضف شيئ للعالم
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <select class="form-select men" aria-label="Default select example">
+                                    <option selected disabled>العلماء</option>
+                                    <% for(man of mans){ %>
+                                        <option value='{"i":"<%= man._id%>","n":"<%= man.name%>"}'>
+                                            <%= man.name%>
+                                        </option>
+
+                                        <% }%>
+
+                                </select>
+                                <select class="form-select madh" aria-label="Default select example">
+                                    <option selected disabled>الماده</option>
+                                    <option value="lessons"> درس</option>
+                                    <option value="articles"> مقال</option>
+                                    <option value="anashid"> نشيد</option>
+                                </select>
+                                <form action="/addinMan" method="post">
+
+                                    <div class="postbody"></div>
+
+                                    <button type="submit" class="btn btn-primary">أضف</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                    aria-controls="flush-collapseThree">
+                                    أضف تصميم
+                                </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <form action="/addinMan" method="post">
+
+                                        <div class="postbody">
+                                            <input type="text" name="name" class="form-control" placeholder="الاسم"
+                                                aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <input type="text" name="image" class="form-control" placeholder="الصوره"
+                                                aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
+                                </div>
+                                <input type="hidden" name="type" value="photos">
+                                <button type="submit" class="btn btn-primary">أضف</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
         </div>
