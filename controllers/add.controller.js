@@ -60,6 +60,7 @@ exports.addInMan = (req, res, next) => {
                 if (e.type == "anashid") { type = Anashid }
     mongoose.connect(url, { useNewUrlParser: true }, (err) => {
         let newthing = new type(e)
+        console.log(e)
         newthing.save((err, resu) => {
             res.redirect("/add/zizo/2009741852")
         })

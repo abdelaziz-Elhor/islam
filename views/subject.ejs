@@ -71,17 +71,20 @@
             <%}else{%>
                 <div class="card mb-3 text-center bg-info mt-5" style="direction: rtl;">
                     <h5 class="card-title">
-                        <img src="<%=man.image%>" class="rounded-circle" style="    width: 100px;">
-                        <%=man.name%>
+                        <a href="/scholar/<%=man._id%>">
+                            <img src="<%=man.image%>" class="rounded-circle" style="    width: 100px;">
+                            <%=man.name%>
+                        </a>
                     </h5>
 
                     <div class="card-body">
-                        <% if(subject.img){%>
+                        <p class="card-text">
+                            <%=subject.name%>
+                        </p>
+                        <% if(subject.image){%>
                             <img src="<%=subject.image%>" class="card-img-top" alt="...">
                             <%}%>
-                                <p class="card-text">
-                                    <%=subject.name%>
-                                </p>
+
                                 <p class="card-text alltext">
                                     <%=subject.text%>
                                 </p>
