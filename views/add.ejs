@@ -369,13 +369,17 @@
 <input type="text" name="name" class="form-control" placeholder="الاسم"
     aria-label="Username" aria-describedby="basic-addon1">
 </div>
+<div class="input-group mb-3">
+<input type="text" name=image" class="form-control" placeholder="الصوره"
+    aria-label="Username" aria-describedby="basic-addon1">
+</div>
                 <div class="input-group mb-3">
                     <div class="form-floating">
   <textarea class="form-control" name="text" placeholder="النص" id="floatingTextarea2" style="height: 100px"></textarea>
   <label for="floatingTextarea2">النص</label>
   </div>
   </div>
-  <input type="text" name="image" value=" ">
+  
   <input type="hidden" name="teacherId" value="${e.i}">
   <input type="hidden" name="teacherName" value="${e.n}">
   <input type="hidden" name="type" value="${$(".madh").val()}">
