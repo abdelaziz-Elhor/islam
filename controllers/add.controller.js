@@ -7,6 +7,7 @@ const Moshaf = require("../models/msahf.model");
 const Photos = require("../models/photos.model");
 const Quotes = require("../models/quotes.model");
 const Complaints = require("../models/complaints.model");
+const Books = require("../models/books.model");
 
 let url = "mongodb+srv://zizoBoy:741852@islam-data.iovdiwe.mongodb.net/all-data?retryWrites=true&w=majority"
 
@@ -57,7 +58,8 @@ exports.addInMan = (req, res, next) => {
     if (e.type == "lessons") { type = Lesson } else
         if (e.type == "articles") { type = Article } else
             if (e.type == "photos") { type = Photos } else
-                if (e.type == "anashid") { type = Anashid }
+                if (e.type == "book") { type = Books } else
+                    if (e.type == "anashid") { type = Anashid }
     mongoose.connect(url, { useNewUrlParser: true }, (err) => {
         let newthing = new type(e)
         console.log(e)
@@ -66,6 +68,7 @@ exports.addInMan = (req, res, next) => {
         })
     })
 }
+
 exports.addQuotes = (req, res, next) => {
     let d = new Date()
     let e = req.body

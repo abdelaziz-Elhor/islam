@@ -1,11 +1,11 @@
 const Scholar = require("../models/scholar.model");
 const Anashid = require("../models/nashids.model");
 const Article = require("../models/articles.model");
-
 const Lesson = require("../models/lessons.model");
 const Moshaf = require("../models/msahf.model");
 const Photos = require("../models/photos.model");
 const Quotes = require("../models/quotes.model");
+const Books = require("../models/books.model");
 const Complaints = require("../models/complaints.model");
 
 let url = "mongodb+srv://zizoBoy:741852@islam-data.iovdiwe.mongodb.net/all-data?retryWrites=true&w=majority"
@@ -47,12 +47,15 @@ exports.getScholar = (req, res, next) => {
             Lesson.find({ teacherId: req.params.id }, (err, lessons) => {
                 Anashid.find({ teacherId: req.params.id }, (err, anashid) => {
                     Article.find({ teacherId: req.params.id }, (err, articles) => {
-                        res.render("scholar", {
-                            scholar: scholar,
-                            lessons: lessons,
-                            articles: articles,
-                            anashid: anashid,
-                            path: req.path
+                        Books.find({ teacherId: req.params.id }, (err, books) => {
+                            res.render("scholar", {
+                                scholar: scholar,
+                                lessons: lessons,
+                                articles: articles,
+                                anashid: anashid,
+                                books: books,
+                                path: req.path
+                            })
                         })
                     })
 
@@ -74,7 +77,8 @@ exports.getInScholar = (req, res, next) => {
         if (req.params.type == "lessons") { type = Lesson } else
             if (req.params.type == "audios") { type = Audio } else
                 if (req.params.type == "articles") { type = Article } else
-                    if (req.params.type == "anashid") { type = Anashid }
+                    if (req.params.type == "books") { type = Books } else
+                        if (req.params.type == "anashid") { type = Anashid }
         type.findOne({ _id: req.params.typeid }, (err, subject) => {
 
             Scholar.findOne({ _id: req.params.id }, (err, man) => {

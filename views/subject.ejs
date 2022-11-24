@@ -1,6 +1,6 @@
 <%- include('parts/header.ejs')%>
     <%- include('parts/nav.ejs')%>
-        <%if(type!=="articles"){%>
+        <%if(type!=="articles"&&type!=="books"){%>
             <style>
                 * {
                     font-family: NotoNaskhArabic !important;
@@ -68,7 +68,7 @@
                 }
             </script>
 
-            <%}else{%>
+            <%}else if(type=="articles" ){%>
                 <div class="card mb-3 text-center bg-info mt-5" style="direction: rtl;">
                     <h5 class="card-title">
                         <a href="/scholar/<%=man._id%>">
@@ -156,6 +156,39 @@
 
 
                 </script>
-                <%}%>
+                <%}else{%>
+                    <style>
+                        * {
+                            font-family: NotoNaskhArabic !important;
+                            font-size: 23px;
+                        }
+                    </style>
+                    <div class="card mb-3 text-center bg-info mt-5" style="direction: rtl;">
+                        <h5 class="card-title">
+                            <a href="/scholar/<%=man._id%>"> <img src="<%=man.image%>" class="rounded-circle" style="
+                            width: 100px;
+                        ">
+                                <%=man.name%>
+                            </a>
+                        </h5>
+                        <%=subject.name%>
+                            <iframe src=" <%=subject.url%>" style="height:588px ;    border: 8px solid black;"
+                                frameborder=" 0"></iframe>
 
-                    <%- include('parts/footer.ejs')%>
+                            <div class="in" style="    width: 100%;
+                        position: absolute;"></div>
+                            <div class="card-body">
+
+
+
+                                <p class="card-text">
+                                    <%=subject.name%>
+                                </p>
+                                <p class="card-text"><small class="text-muted">
+                                        <%=subject.date%>
+                                    </small></p>
+                            </div>
+                    </div>
+                    <%}%>
+
+                        <%- include('parts/footer.ejs')%>

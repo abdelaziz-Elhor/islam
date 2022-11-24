@@ -27,6 +27,11 @@
                             data-bs-target="#pills-anashid" type="button" role="tab" aria-controls="pills-anashid"
                             aria-selected="true">الاناشيد</button>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link " id="pills-books-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-books" type="button" role="tab" aria-controls="pills-books"
+                            aria-selected="true">الكتب</button>
+                    </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-less" role="tabpanel"
@@ -103,6 +108,34 @@
                                                     <img src="https://img.icons8.com/color/512/calendar--v1.png"
                                                         style="width: 20px;">
                                                     <%=nashid.date%>
+                                                </small></p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <%}%>
+                                    <%}else{%>
+                                        <div class="alert alert-info" role="alert">
+                                            لا يوجد
+                                        </div>
+                                        <%}%>
+                    </div>
+                    <div class="tab-pane fade" id="pills-books" role="tabpanel" aria-labelledby="pills-books-tab"
+                        tabindex="0">
+                        <%if(books.length!=0){%>
+                            <%for(book of books){%>
+                                <a href="/subject/<%=scholar._id%>/books/<%=book._id%>">
+                                    <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">
+                                            <%=scholar.name%>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <%=book.name%>
+                                            </h5>
+                                            <p class="card-text"><small class="text-muted">
+                                                    <img src="https://img.icons8.com/color/512/calendar--v1.png"
+                                                        style="width: 20px;">
+                                                    <%=book.date%>
                                                 </small></p>
                                         </div>
                                     </div>
