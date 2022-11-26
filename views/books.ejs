@@ -15,10 +15,10 @@
 
         <div class="row mt-4">
             <div class="col row">
-                <h2>الدروس</h2>
+                <h2>الكتب</h2>
                 <%for(sub of data){%>
-                    <a class="a col-lg-3 col-sm-6" href="/subject/<%=sub.teacherId%>/lessons/<%=sub._id%>">
-                        <div class="card text-center text-bg-dark mb-3" style="max-width: 18rem;">
+                    <a class="a col-lg-3 col-sm-6" href="/subject/<%=sub.teacherId%>/books/<%=sub._id%>">
+                        <div class="card text-center text-bg-success mb-3" style="max-width: 18rem;">
                             <div class="card-header">
                                 <%=sub.teacherName%>
                             </div>

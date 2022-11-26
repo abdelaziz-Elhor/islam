@@ -168,6 +168,19 @@ exports.getLessons = (req, res, next) => {
         })
     })
 }
+exports.getBooks = (req, res, next) => {
+    mongoose.connect(url, { useNewUrlParser: true }, (err) => {
+        Books.find({}, (err, data) => {
+
+            mongoose.disconnect()
+            res.render("books", {
+                data: data,
+                path: req.path
+            })
+        })
+    })
+}
+
 exports.getPhotos = (req, res, next) => {
     mongoose.connect(url, { useNewUrlParser: true }, (err) => {
         Photos.find({}, (err, data) => {
