@@ -1,10 +1,11 @@
 <%- include('parts/header.ejs')%>
     <%- include('parts/nav.ejs')%>
         <style>
-            .card.text-center.text-bg-dark.mb-3 {
+            .card.text-center {
                 max-width: 18rem;
                 min-height: 181px;
                 max-height: 181px;
+                overflow: auto;
             }
 
             .a {
@@ -15,7 +16,9 @@
 
         <div class="row mt-4">
             <div class="col row">
-                <h2>الكتب</h2>
+                <h2 style="
+                text-align: center;
+            ">الكتب</h2>
                 <%for(sub of data){%>
                     <a class="a col-lg-3 col-sm-6" href="/subject/<%=sub.teacherId%>/books/<%=sub._id%>">
                         <div class="card text-center text-bg-success mb-3" style="max-width: 18rem;">
