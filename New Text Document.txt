@@ -1,0 +1,30 @@
+<div id="topcontrol" class="fa fa-angle-up" title="Åáì ÇáÃÚáì" style="bottom: 10px;"></div>
+#topcontrol:before {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+}
+#topcontrol:before {
+    content: "\f106";
+}
+    z-index: 999;
+    background: #37b8eb;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 24px;
+    position: fixed;
+    bottom: -100px;
+    right: 10px;
+    cursor: pointer;
+    overflow: auto;
+    opacity: .7;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;

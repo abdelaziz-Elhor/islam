@@ -180,6 +180,14 @@ exports.getBooks = (req, res, next) => {
         })
     })
 }
+exports.getAzan = (req, res, next) => {
+
+    res.render("azan", {
+
+        path: req.path
+    })
+
+}
 
 exports.getPhotos = (req, res, next) => {
     mongoose.connect(url, { useNewUrlParser: true }, (err) => {

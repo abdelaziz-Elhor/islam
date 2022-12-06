@@ -1,0 +1,1 @@
+<iframe src="https://timesprayer.com/widgets.php?frame=1&amp;lang=ar&amp;name=ismailia&amp;sound=true&amp;avachang=true&amp;fcolor=000000&amp;tcolor=2D959C&amp;frcolor=2D959C&" style="border: none;overflow: hidden;width: 453px;height: 188px;"></iframe>
