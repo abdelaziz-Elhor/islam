@@ -2,17 +2,99 @@
     <%- include('parts/nav.ejs')%>
 
         <div class=" row my-0 mt-2">
-            <div class="col"><a class="btn btn-info w-100" href="/moshaf">تصفح مُصحفناالإلكتروني <img
+            <div class="col-4">
+                <a class="btn btn-info w-100 mb-3" href="/moshaf">تصفح مُصحفناالإلكتروني <img
                         src="https://img.icons8.com/external-others-bzzricon-studio/512/external-quran-ramadan-others-bzzricon-studio-2.png"
                         style="
                 width: 40px;
             "><br>
                     <h6>المصحف به اصوات للقراء</h6>
-                </a></div>
-            <div class="col">
-
+                </a>
+                <iframe
+                    src="https://timesprayer.com/widgets.php?frame=1&amp;lang=ar&amp;name=ismailia&amp;sound=true&amp;avachang=true&amp;fcolor=000000&amp;tcolor=2D959C&amp;frcolor=2D959C&"
+                    style="border: none;overflow: hidden;width: 100%;height: 188px;">
+                </iframe>
             </div>
-            <div class="col">
+            <div class="col-5">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" style="height: s74px;">
+                        <a class="carousel-item active">
+                            <img style="height: 275px;"
+                                src="https://img.icons8.com/external-others-bzzricon-studio/344/external-mosque-ramadan-others-bzzricon-studio-2.png"
+                                class="d-block w-100 " alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>
+                                    ....... العلماءوالدعاة
+                                </h5>
+                                <p></p>
+                            </div>
+                        </a>
+                        <%for(scholar of scholars){%>
+                            <div class="carousel-item">
+                                <img src="<%=scholar.image%>" class="d-block w-100" style="height: 275px;" alt="...">
+                                <a href="/scholar/<%=scholar._id%>" class="carousel-caption d-none d-md-block">
+                                    <h5 style="
+                                    background-color: black;
+                                    border-radius: 44px;
+                                    opacity: 0.8;
+                                ">
+                                        <%=scholar.name%>
+                                    </h5>
+                                    <p></p>
+                                </a>
+                            </div>
+                            <%}%>
+                                <a class="carousel-item">
+                                    <img style="height: 275px;"
+                                        src="https://img.icons8.com/external-others-bzzricon-studio/344/external-mosque-ramadan-others-bzzricon-studio-2.png"
+                                        class="d-block w-100 " alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>
+                                            ....... الدروس
+                                        </h5>
+                                        <p></p>
+                                    </div>
+                                </a>
+                                <%for(scholar of lessons){%>
+                                    <div class="carousel-item">
+                                        <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/512/external-video-lesson-online-education-flaticons-lineal-color-flat-icons-3.png"
+                                            class="d-block w-100" style="height: 275px;" alt="...">
+                                        <a href="/subject/<%=scholar.teacherId%>/lessons/<%=scholar._id%>"
+                                            class="carousel-caption d-none d-md-block">
+                                            <h5 style="
+                                        background-color: black;
+                                        border-radius: 44px;
+                                        opacity: 0.8;
+                                    ">
+                                                <%=scholar.teacherName%>
+                                            </h5>
+
+                                            <p style="
+                                            color: black;
+                                            background-color: antiquewhite;
+                                            border-radius: 48px;
+                                        ">
+                                                <%=scholar.name%>
+                                            </p>
+                                        </a>
+                                    </div>
+                                    <%}%>
+                    </div>
+
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-3">
                 <%- include('parts/list.ejs')%>
             </div>
         </div>

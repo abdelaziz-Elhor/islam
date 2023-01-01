@@ -42,27 +42,58 @@
                 </form>
                 <button class="btn btn-info ok mb-5">تم</button>
                 <%for(sub of data){%>
-                    <div class="card col-12 text-center bg-warning mb-3" style="overflow: hidden;">
-                        <div class="card-header">
-                            <%= sub.name%>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">
+                    <%if(sub.name !=="zizo" ){%>
+                        <a href="<%= sub.url%>">
+                            <div class="card col-12 text-center bg-warning mb-3" style="overflow: hidden;">
+                                <div class="card-header">
+                                    <%= sub.name%>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
 
-                            </h5>
-                            <p class="card-text">
-                                <%= sub.text%>
-                                    <br>
+                                        <%= sub.url%>
 
-                            </p>
-                            <small class="text-muted">
-                                <img src="https://img.icons8.com/color/512/calendar--v1.png" style="width: 20px;">
-                                <%= sub.date%>
-                            </small>
-                        </div>
-                    </div>
-                    </a>
-                    <%}%>
+
+                                    </h5>
+                                    <p class="card-text">
+                                        <%= sub.text%>
+                                            <br>
+
+                                    </p>
+                                    <small class="text-muted">
+                                        <img src="https://img.icons8.com/color/512/calendar--v1.png"
+                                            style="width: 20px;">
+                                        <%= sub.date%>
+                                    </small>
+                                </div>
+                            </div>
+                        </a>
+                        <%}else {%>
+                            <a href="<%= sub.url%>">
+                                <div class="card col-12 text-center bg-info mb-3" style="overflow: hidden;">
+                                    <div class="card-header">
+                                        نحن
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+
+                                            <%= sub.url%>
+                                        </h5>
+                                        <p class="card-text">
+                                            <%= sub.text%>
+                                                <br>
+
+                                        </p>
+                                        <small class="text-muted">
+                                            <img src="https://img.icons8.com/color/512/calendar--v1.png"
+                                                style="width: 20px;">
+                                            <%= sub.date%>
+                                        </small>
+                                    </div>
+                                </div>
+                            </a>
+                            <%}%>
+                                <%}%>
             </div>
             <div class="col-3">
                 <%- include('parts/list.ejs')%>

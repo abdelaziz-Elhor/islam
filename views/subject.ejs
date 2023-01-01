@@ -1,5 +1,9 @@
 <%- include('parts/header.ejs')%>
     <%- include('parts/nav.ejs')%>
+        <iframe
+            src="https://timesprayer.com/widgets.php?frame=1&amp;lang=ar&amp;name=ismailia&amp;sound=true&amp;avachang=true&amp;fcolor=000000&amp;tcolor=2D959C&amp;frcolor=2D959C&"
+            style="border: none;overflow: hidden;width: 100%;height: 188px;">
+        </iframe>
         <%if(type!=="articles"&&type!=="books"){%>
             <style>
                 * {
@@ -163,6 +167,7 @@
                             font-size: 23px;
                         }
                     </style>
+
                     <div class="card mb-3 text-center bg-info mt-5" style="direction: rtl;">
                         <h5 class="card-title">
                             <a href="/scholar/<%=man._id%>"> <img src="<%=man.image%>" class="rounded-circle" style="
