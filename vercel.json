@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "framework":"nodejs"
+    "framework": "nodejs",
     "builds": [
         {
             "src": "app.js",
