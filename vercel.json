@@ -1,5 +1,6 @@
 {
     "version": 2,
+    "framework":"nodejs"
     "builds": [
         {
             "src": "app.js",
@@ -8,7 +9,6 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
             "dest": "app.js"
         }
     ]
