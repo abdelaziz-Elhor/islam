@@ -9,7 +9,7 @@
     ],
     "routes": [
         {
-            "dest": "app.js"
+            "src": "app.js"
         }
    ]
 }
