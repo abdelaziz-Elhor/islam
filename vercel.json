@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "framework": "nodejs",
+    "framework": "nextjs",
     "builds": [
         {
             "src": "app.js",
