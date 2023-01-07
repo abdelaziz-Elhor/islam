@@ -64,7 +64,7 @@ exports.scholars = (req, res, next) => {
                     res.render("scholars", {
                         data: scholars,
                         path: req.path,
-                        vesits: vesits.length
+                        vesits: vesits ? vesits.length : 0
                     })
                 })
             })
@@ -92,7 +92,7 @@ exports.getScholar = (req, res, next) => {
                                         anashid: anashid,
                                         books: books,
                                         path: req.path,
-                                        vesits: vesits.length
+                                        vesits: vesits ? vesits.length : 0
                                     })
                                 })
                             })
@@ -131,7 +131,7 @@ exports.getInScholar = (req, res, next) => {
                             man: man,
                             type: req.params.type,
                             path: req.path,
-                            vesits: vesits.length
+                            vesits: vesits ? vesits.length : 0
                         })
                     })
                 })
@@ -289,7 +289,7 @@ exports.getOnePhoto = (req, res, next) => {
                     res.render("photo", {
                         data: data,
                         path: "/photos",
-                        vesits: vesits.length
+                        vesits: vesits ? vesits.length : 0
                     })
                 })
             })
