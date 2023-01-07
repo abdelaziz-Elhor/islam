@@ -22,17 +22,16 @@ exports.getAll = (req, res, next) => {
                     Article.find({}, (err, articles) => {
 
                         Books.find({}, (err, books) => {
-                            let visit = new Visits({ path: "/", date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString() })
-                            visit.save((err, resu) => {
-                                res.render("index", {
-                                    scholars: scholar,
-                                    lessons: lessons,
-                                    articles: articles,
-                                    anashid: anashid,
-                                    books: books,
-                                    path: "/"
-                                })
+
+                            res.render("index", {
+                                scholars: scholar,
+                                lessons: lessons,
+                                articles: articles,
+                                anashid: anashid,
+                                books: books,
+                                path: "/"
                             })
+
                         })
                     })
 
@@ -60,9 +59,13 @@ exports.scholars = (req, res, next) => {
             });
             let visit = new Visits({ path: req.path, date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString() })
             visit.save((err, resu) => {
-                res.render("scholars", {
-                    data: scholars,
-                    path: req.path
+                Visits.find({ path: req.path }, (err, vesits) => {
+
+                    res.render("scholars", {
+                        data: scholars,
+                        path: req.path,
+                        vesits: vesits.length
+                    })
                 })
             })
             mongoose.disconnect()
@@ -81,13 +84,16 @@ exports.getScholar = (req, res, next) => {
                         Books.find({ teacherId: req.params.id }, (err, books) => {
                             let visit = new Visits({ path: req.path, date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString() })
                             visit.save((err, resu) => {
-                                res.render("scholar", {
-                                    scholar: scholar,
-                                    lessons: lessons,
-                                    articles: articles,
-                                    anashid: anashid,
-                                    books: books,
-                                    path: req.path
+                                Visits.find({ path: req.path }, (err, vesits) => {
+                                    res.render("scholar", {
+                                        scholar: scholar,
+                                        lessons: lessons,
+                                        articles: articles,
+                                        anashid: anashid,
+                                        books: books,
+                                        path: req.path,
+                                        vesits: vesits.length
+                                    })
                                 })
                             })
                         })
@@ -116,14 +122,17 @@ exports.getInScholar = (req, res, next) => {
         type.findOne({ _id: req.params.typeid }, (err, subject) => {
 
             Scholar.findOne({ _id: req.params.id }, (err, man) => {
-                let visit = new Visits({ path: req.path, date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString() })
+                let visit = new Visits({ path: "/" + req.params.id + "/" + req.params.type + "/" + req.params.typeid, date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString() })
                 visit.save((err, resu) => {
-                    mongoose.disconnect()
-                    res.render("subject", {
-                        subject: subject,
-                        man: man,
-                        type: req.params.type,
-                        path: req.path
+                    Visits.find({ path: "/" + req.params.id + "/" + req.params.type + "/" + req.params.typeid }, (err, vesits) => {
+                        mongoose.disconnect()
+                        res.render("subject", {
+                            subject: subject,
+                            man: man,
+                            type: req.params.type,
+                            path: req.path,
+                            vesits: vesits.length
+                        })
                     })
                 })
             })
@@ -136,22 +145,6 @@ exports.goAdd = (req, res, next) => {
     res.render("add")
 
 }
-exports.addMan = (req, res, next) => {
-    mongoose.connect(url, { useNewUrlParser: true }, (err) => {
-        let newScholar = new Scholar({
-            name: req.body.name,
-            image: req.body.image,
-            discr: req.body.discr,
-        })
-        newScholar.save((err, resu) => {
-
-
-            res.redirect("/add/zizo/2009741852")
-        })
-    })
-
-}
-
 exports.moshaf = (req, res, next) => {
     mongoose.connect(url, { useNewUrlParser: true }, (err) => {
         Moshaf.find({}, (err, msahf) => {
@@ -291,10 +284,13 @@ exports.getOnePhoto = (req, res, next) => {
         Photos.findOne({ _id: req.params.id }, (err, data) => {
             let visit = new Visits({ path: req.path, date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString() })
             visit.save((err, resu) => {
-                mongoose.disconnect()
-                res.render("photo", {
-                    data: data,
-                    path: "/photos"
+                Visits.find({ path: req.path }, (err, vesits) => {
+                    mongoose.disconnect()
+                    res.render("photo", {
+                        data: data,
+                        path: "/photos",
+                        vesits: vesits.length
+                    })
                 })
             })
         })

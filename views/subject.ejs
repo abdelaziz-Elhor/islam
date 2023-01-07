@@ -21,6 +21,8 @@
                     </a>
                 </h5>
                 <%=subject.name%>
+                    <div class="btn btn-info">المشاهدات<%=vesits%>
+                    </div>
 
                     <video autoplay src="<%=subject.url%>" id="vid" controls class="card-img-top">
 
@@ -86,6 +88,8 @@
                     <div class="card-body">
                         <p class="card-text">
                             <%=subject.name%>
+                                <div class="btn btn-info">المشاهدات<%=vesits%>
+                                </div>
                         </p>
                         <% if(subject.image){%>
                             <img src="<%=subject.image%>" class="card-img-top" alt="...">
@@ -176,6 +180,8 @@
                             </a>
                         </h5>
                         <%=subject.name%>
+                            <div class="btn btn-info">المشاهدات: <%=vesits%>
+                            </div>
                             <iframe
                                 src="https://ar.islamway.net/bundles/viewers/pdfjs-1.9.426/web/viewer.php?file=<%=subject.url%>"
                                 style="height:588px ;    border: 8px solid black;" frameborder=" 0"></iframe>
