@@ -45,25 +45,27 @@
     ">
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-less-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-less" type="button" role="tab" aria-controls="pills-less"
-                            aria-selected="true">الدروس</button>
+                        <button class="nav-link active <%= lessons.length==0 ? 'bg-warning' : ' '%>" id="pills-less-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-less" type="button" role="tab"
+                            aria-controls="pills-less" aria-selected="true">الدروس</button>
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-articles-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-articles" type="button" role="tab" aria-controls="pills-articles"
-                            aria-selected="true">المقالات</button>
+                        <button class="nav-link <%= articles.length==0 ? 'bg-warning' : ' '%>" id="pills-articles-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-articles" type="button" role="tab"
+                            aria-controls="pills-articles" aria-selected="true">المقالات</button>
                     </li>
+
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-anashid-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-anashid" type="button" role="tab" aria-controls="pills-anashid"
-                            aria-selected="true">الاناشيد</button>
+                        <button class="nav-link <%= anashid.length==0 ? 'bg-warning' : ' '%>" id="pills-anashid-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-anashid" type="button" role="tab"
+                            aria-controls="pills-anashid" aria-selected="true">الاناشيد</button>
                     </li>
+
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-books-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-books" type="button" role="tab" aria-controls="pills-books"
-                            aria-selected="true">الكتب</button>
+                        <button class="nav-link <%= books.length==0 ? 'bg-warning' : ' '%>" id="pills-books-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-books" type="button" role="tab"
+                            aria-controls="pills-books" aria-selected="true">الكتب</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
